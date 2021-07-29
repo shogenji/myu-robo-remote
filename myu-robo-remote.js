@@ -99,3 +99,9 @@ function startup() {
 }
 
 document.addEventListener("DOMContentLoaded", startup);
+
+window.oncontextmenu = function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    return false;
+};
