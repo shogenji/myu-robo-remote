@@ -23,7 +23,9 @@ async function connect() {
     const btnTurnRight = document.getElementById('btnTurnRight');
     
     btnForward.addEventListener('mousedown', remoteForward, false);
+    btnForward.addEventListener('touchstart', remoteForward, false);
     btnForward.addEventListener('mouseup', remoteMouseup, false);
+    btnForward.addEventListener('touchcancel', remoteMouseup, false);
     btnBackward.addEventListener('mousedown', remoteBackward, false);
     btnBackward.addEventListener('mouseup', remoteMouseup, false);
 
