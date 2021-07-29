@@ -25,7 +25,7 @@ async function connect() {
     btnForward.addEventListener('mousedown', remoteForward, false);
     btnForward.addEventListener('touchstart', remoteForward, false);
     btnForward.addEventListener('mouseup', remoteMouseup, false);
-    btnForward.addEventListener('touchcancel', remoteMouseup, false);
+    btnForward.addEventListener('touchend', remoteMouseup, false);
     btnBackward.addEventListener('mousedown', remoteBackward, false);
     btnBackward.addEventListener('mouseup', remoteMouseup, false);
 
