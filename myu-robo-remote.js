@@ -17,22 +17,6 @@ async function connect() {
     count = 0;
 
 
-    const btnForward = document.getElementById('btnForward');
-    const btnBackward = document.getElementById('btnBackward');
-    const btnTurnLeft = document.getElementById('btnTurnLeft');
-    const btnTurnRight = document.getElementById('btnTurnRight');
-    
-    btnForward.addEventListener('mousedown', remoteForward, false);
-    btnForward.addEventListener('touchstart', remoteForward, false);
-    btnForward.addEventListener('mouseup', remoteMouseup, false);
-    btnForward.addEventListener('touchend', remoteMouseup, false);
-    btnBackward.addEventListener('mousedown', remoteBackward, false);
-    btnBackward.addEventListener('mouseup', remoteMouseup, false);
-
-    btnTurnLeft.addEventListener('mousedown', remoteTurnLeft, false);
-    btnTurnLeft.addEventListener('mouseup', remoteMouseup, false);
-    btnTurnRight.addEventListener('mousedown', remoteTurnRight, false);
-    btnTurnRight.addEventListener('mouseup', remoteMouseup, false);
     
     
 }
@@ -87,3 +71,31 @@ async function remoteMouseup() {
     // console.log(data);
 }
 
+function startup() {
+    const btnForward = document.getElementById('btnForward');
+    const btnBackward = document.getElementById('btnBackward');
+    const btnTurnLeft = document.getElementById('btnTurnLeft');
+    const btnTurnRight = document.getElementById('btnTurnRight');
+    
+    btnForward.addEventListener('mousedown', remoteForward, false);
+    btnForward.addEventListener('touchstart', remoteForward, false);
+    btnForward.addEventListener('mouseup', remoteMouseup, false);
+    btnForward.addEventListener('touchend', remoteMouseup, false);
+
+    btnBackward.addEventListener('mousedown', remoteBackward, false);
+    btnBackward.addEventListener('touchstart', remoteBackward, false);
+    btnBackward.addEventListener('mouseup', remoteMouseup, false);
+    btnBackward.addEventListener('touchend', remoteMouseup, false);
+
+    btnTurnLeft.addEventListener('mousedown', remoteTurnLeft, false);
+    btnTurnLeft.addEventListener('touchstart', remoteTurnLeft, false);
+    btnTurnLeft.addEventListener('mouseup', remoteMouseup, false);
+    btnTurnLeft.addEventListener('touchend', remoteMouseup, false);
+    
+    btnTurnRight.addEventListener('mousedown', remoteTurnRight, false);
+    btnTurnRight.addEventListener('touchstart', remoteTurnRight, false);
+    btnTurnRight.addEventListener('mouseup', remoteMouseup, false);
+    btnTurnRight.addEventListener('touchend', remoteMouseup, false);
+}
+
+document.addEventListener("DOMContentLoaded", startup);
