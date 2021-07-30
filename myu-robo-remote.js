@@ -1,9 +1,8 @@
 var device;
-var count;
 
 async function connect() {
 
-    // Prompt user to select an Apple Keyboard Backlight device.
+    // Prompt user to select a MYU robo device.
 	[device] = await navigator.hid.requestDevice({
     	filters: [{ vendorId: 0x04d8, usage: 0x01, usagePage: 65280 }]
 	});
@@ -12,31 +11,13 @@ async function connect() {
 	// Wait for the HID connection to open.
 	await device.open();
 
-    msg =　device.productName + "に接続しました。";
-    document.getElementById ("res").innerHTML = msg;
-    count = 0;
-
-
-    const btnForward = document.getElementById('btnForward');
-    const btnBackward = document.getElementById('btnBackward');
-    const btnTurnLeft = document.getElementById('btnTurnLeft');
-    const btnTurnRight = document.getElementById('btnTurnRight');
-    
-    btnForward.addEventListener('mousedown', remoteForward, false);
-    btnForward.addEventListener('mouseup', remoteMouseup, false);
-    btnBackward.addEventListener('mousedown', remoteBackward, false);
-    btnBackward.addEventListener('mouseup', remoteMouseup, false);
-
-    btnTurnLeft.addEventListener('mousedown', remoteTurnLeft, false);
-    btnTurnLeft.addEventListener('mouseup', remoteMouseup, false);
-    btnTurnRight.addEventListener('mousedown', remoteTurnRight, false);
-    btnTurnRight.addEventListener('mouseup', remoteMouseup, false);
-    
+    msg = device.productName + "に接続しました。";
+    document.getElementById("res").innerHTML = msg;
     
 }
 
 async function remoteForward() {
-    if(!device) return;
+    if (!device) return;
 	
 	const reportId = 0x00;
     const data = Uint8Array.from([  2,   2,   0, 222, 119,  74,  10, 226, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0]);
@@ -46,7 +27,7 @@ async function remoteForward() {
 }
 
 async function remoteBackward() {
-    if(!device) return;
+    if (!device) return;
 	
 	const reportId = 0x00;
     const data = Uint8Array.from([  2,   8,   0, 222, 119,  74,  10, 226, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0]);
@@ -56,7 +37,7 @@ async function remoteBackward() {
 }
 
 async function remoteTurnLeft() {
-    if(!device) return;
+    if (!device) return;
 	
 	const reportId = 0x00;
     const data = Uint8Array.from([  2,  11,   0, 222, 119,  74,  10, 226, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0]);
@@ -66,7 +47,7 @@ async function remoteTurnLeft() {
 }
 
 async function remoteTurnRight() {
-    if(!device) return;
+    if (!device) return;
 	
 	const reportId = 0x00;
     const data = Uint8Array.from([  2,  10,   0, 222, 119,  74,  10, 226, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0]);
@@ -76,7 +57,7 @@ async function remoteTurnRight() {
 }
 
 async function remoteMouseup() {
-    if(!device) return;
+    if (!device) return;
 
 	const reportId = 0x00;
     const data = Uint8Array.from([  2,   0,   0, 222, 119,  74,  10, 226, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0]);
@@ -85,3 +66,41 @@ async function remoteMouseup() {
     // console.log(data);
 }
 
+function startup() {
+    const btnConnect = document.getElementById('btnConnect');
+    btnConnect.addEventListener('mouseup', connect, false);
+    btnConnect.addEventListener('touchend', connect, false);
+
+    const btnForward = document.getElementById('btnForward');
+    const btnBackward = document.getElementById('btnBackward');
+    const btnTurnLeft = document.getElementById('btnTurnLeft');
+    const btnTurnRight = document.getElementById('btnTurnRight');
+    
+    btnForward.addEventListener('mousedown', remoteForward, false);
+    btnForward.addEventListener('touchstart', remoteForward, false);
+    btnForward.addEventListener('mouseup', remoteMouseup, false);
+    btnForward.addEventListener('touchend', remoteMouseup, false);
+
+    btnBackward.addEventListener('mousedown', remoteBackward, false);
+    btnBackward.addEventListener('touchstart', remoteBackward, false);
+    btnBackward.addEventListener('mouseup', remoteMouseup, false);
+    btnBackward.addEventListener('touchend', remoteMouseup, false);
+
+    btnTurnLeft.addEventListener('mousedown', remoteTurnLeft, false);
+    btnTurnLeft.addEventListener('touchstart', remoteTurnLeft, false);
+    btnTurnLeft.addEventListener('mouseup', remoteMouseup, false);
+    btnTurnLeft.addEventListener('touchend', remoteMouseup, false);
+    
+    btnTurnRight.addEventListener('mousedown', remoteTurnRight, false);
+    btnTurnRight.addEventListener('touchstart', remoteTurnRight, false);
+    btnTurnRight.addEventListener('mouseup', remoteMouseup, false);
+    btnTurnRight.addEventListener('touchend', remoteMouseup, false);
+}
+
+document.addEventListener("DOMContentLoaded", startup);
+
+window.oncontextmenu = function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    return false;
+};

@@ -4,23 +4,40 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>ミュウロボテスト：リモート操作</title>
+		<title>MYUロボテスト：リモート操作</title>
 		<script src="myu-robo-remote.js"></script>
 	</head>
 	<body>
-		<div class="wrapper">
-			<h1>ミュウロボテスト：リモート操作</h1>
-			接続ボタンを押して、ミュウロボを選択します。<br>
-			送信ボタンを押すと、データを送信します。<br>
-			<br>
-			<input type="button" onClick="connect()" value="接続"><br><br>
-			　　<input type="button" id="btnForward" value="前進"><br>
-			<input type="button" id="btnTurnLeft" value="左旋回">
-			<input type="button" id="btnTurnRight" value="右旋回"><br>
-			　　<input type="button" id="btnBackward" value="後退"><br>
-			<br>
-			<div id="res" class="wrapper">
-				接続されていません。
-			</div>
-		</div>
+		<h1>MYUロボテスト：リモート操作</h1>
+		接続ボタンを押して、MYUロボを選択します。<br>
+		操作ボタンを押してMYUロボを操作します。<br>
+		<br>
+		<table>
+			<tr>
+				<td colspan="3">
+					<input type="button" id="btnConnect" onClick="connect()" value="接続"><br><br>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="button" id="btnForward" value="前進"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="button" id="btnBackward" value="後退"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><input type="button" id="btnTurnLeft" value="左回り"></td>
+				<td></td>
+				<td><input type="button" id="btnTurnRight" value="右回り"></td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<span id="res">接続されていません。</span>
+				</td>
+			</tr>
+		</table>
+	</body>
 </html>
