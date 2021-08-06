@@ -83,21 +83,32 @@ async function remoteTurnLeft() {
 }
 
 async function remoteTurnRight() {
+    console.log(event.type);
+
     if (!device) return;
 
-    if (flag_control) {
-        return;
-    } else {
-        console.log(event.type);
-
-        flag_control = true;
-        const reportId = 0x00;
-        const data = Uint8Array.from([  2,  10,   0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0]);
-        
-        await device.sendReport(reportId, new Uint8Array(data));
-        // console.log(data);
-    }
+    const reportId = 0x00;
+    const data = Uint8Array.from([  2,  10,   0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0]);
+    
+    await device.sendReport(reportId, new Uint8Array(data));
+    // console.log(data);
 }
+// async function remoteTurnRight() {
+//     if (!device) return;
+
+//     if (flag_control) {
+//         return;
+//     } else {
+//         console.log(event.type);
+
+//         flag_control = true;
+//         const reportId = 0x00;
+//         const data = Uint8Array.from([  2,  10,   0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0]);
+        
+//         await device.sendReport(reportId, new Uint8Array(data));
+//         // console.log(data);
+//     }
+// }
 
 async function remoteMouseup() {
     console.log(event.type);
