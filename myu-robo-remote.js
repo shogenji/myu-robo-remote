@@ -1,5 +1,4 @@
 let device;
-let flag_control = false;
   
 async function connect() {
     console.log(event.type);
@@ -32,54 +31,39 @@ async function connect() {
   }
 
 async function remoteForward() {
+    console.log(event.type);
+
     if (!device) return;
 
-    if (flag_control) {
-        return;
-    } else {
-        console.log(event.type);
-    
-        flag_control = true;
-        const reportId = 0x00;
-        const data = Uint8Array.from([  2,   2,   0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0]);
-    
-        await device.sendReport(reportId, new Uint8Array(data));
-        // console.log(data);
-    }
+    const reportId = 0x00;
+    const data = Uint8Array.from([  2,   2,   0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0]);
+
+    await device.sendReport(reportId, new Uint8Array(data));
+    // console.log(data);
 }
 
 async function remoteBackward() {
+    console.log(event.type);
+
     if (!device) return;
 
-    if (flag_control) {
-        return;
-    } else {
-        console.log(event.type);
+    const reportId = 0x00;
+    const data = Uint8Array.from([  2,   8,   0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0]);
 
-        flag_control = true;
-        const reportId = 0x00;
-        const data = Uint8Array.from([  2,   8,   0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0]);
-
-        await device.sendReport(reportId, new Uint8Array(data));
-        // console.log(data);
-    }
+    await device.sendReport(reportId, new Uint8Array(data));
+    // console.log(data);
 }
 
 async function remoteTurnLeft() {
+    console.log(event.type);
+
     if (!device) return;
 
-    if (flag_control) {
-        return;
-    } else {
-        console.log(event.type);
+    const reportId = 0x00;
+    const data = Uint8Array.from([  2,   11,   0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0]);
 
-        flag_control = true;
-        const reportId = 0x00;
-        const data = Uint8Array.from([  2,   11,   0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0]);
-
-        await device.sendReport(reportId, new Uint8Array(data));
-        // console.log(data);
-    }
+    await device.sendReport(reportId, new Uint8Array(data));
+    // console.log(data);
 }
 
 async function remoteTurnRight() {
@@ -93,29 +77,11 @@ async function remoteTurnRight() {
     await device.sendReport(reportId, new Uint8Array(data));
     // console.log(data);
 }
-// async function remoteTurnRight() {
-//     if (!device) return;
-
-//     if (flag_control) {
-//         return;
-//     } else {
-//         console.log(event.type);
-
-//         flag_control = true;
-//         const reportId = 0x00;
-//         const data = Uint8Array.from([  2,  10,   0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0]);
-        
-//         await device.sendReport(reportId, new Uint8Array(data));
-//         // console.log(data);
-//     }
-// }
 
 async function remoteMouseup() {
     console.log(event.type);
 
     if (!device) return;
-
-    flag_control = false;
 
     const reportId = 0x00;
     const data = Uint8Array.from([  2,   0,   0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0]);
@@ -138,25 +104,25 @@ function startup() {
     const btnTurnLeft = document.getElementById('btnTurnLeft');
     const btnTurnRight = document.getElementById('btnTurnRight');
     
-    btnForward.addEventListener('mousedown', remoteForward, false);
     btnForward.addEventListener('touchstart', remoteForward, false);
-    btnForward.addEventListener('mouseup', remoteMouseup, false);
     btnForward.addEventListener('touchend', remoteMouseup, false);
+    btnForward.addEventListener('mousedown', remoteForward, false);
+    btnForward.addEventListener('mouseup', remoteMouseup, false);
 
-    btnBackward.addEventListener('mousedown', remoteBackward, false);
     btnBackward.addEventListener('touchstart', remoteBackward, false);
-    btnBackward.addEventListener('mouseup', remoteMouseup, false);
     btnBackward.addEventListener('touchend', remoteMouseup, false);
+    btnBackward.addEventListener('mousedown', remoteBackward, false);
+    btnBackward.addEventListener('mouseup', remoteMouseup, false);
 
     btnTurnLeft.addEventListener('touchstart', remoteTurnLeft, false);
     btnTurnLeft.addEventListener('touchend', remoteMouseup, false);
     btnTurnLeft.addEventListener('mousedown', remoteTurnLeft, false);
     btnTurnLeft.addEventListener('mouseup', remoteMouseup, false);
     
-    btnTurnRight.addEventListener('mousedown', remoteTurnRight, false);
     btnTurnRight.addEventListener('touchstart', remoteTurnRight, false);
-    btnTurnRight.addEventListener('mouseup', remoteMouseup, false);
     btnTurnRight.addEventListener('touchend', remoteMouseup, false);
+    btnTurnRight.addEventListener('mousedown', remoteTurnRight, false);
+    btnTurnRight.addEventListener('mouseup', remoteMouseup, false);
 }
 
 document.addEventListener("DOMContentLoaded", startup);
