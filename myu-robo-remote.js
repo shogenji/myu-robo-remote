@@ -148,10 +148,10 @@ function startup() {
     btnBackward.addEventListener('mouseup', remoteMouseup, false);
     btnBackward.addEventListener('touchend', remoteMouseup, false);
 
-    btnTurnLeft.addEventListener('mousedown', remoteTurnLeft, false);
     btnTurnLeft.addEventListener('touchstart', remoteTurnLeft, false);
-    btnTurnLeft.addEventListener('mouseup', remoteMouseup, false);
     btnTurnLeft.addEventListener('touchend', remoteMouseup, false);
+    btnTurnLeft.addEventListener('mousedown', remoteTurnLeft, false);
+    btnTurnLeft.addEventListener('mouseup', remoteMouseup, false);
     
     btnTurnRight.addEventListener('mousedown', remoteTurnRight, false);
     btnTurnRight.addEventListener('touchstart', remoteTurnRight, false);
