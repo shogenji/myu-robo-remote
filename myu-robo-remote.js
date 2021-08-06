@@ -3,6 +3,8 @@ var timer = NaN;
 
   
 async function connect() {
+    console.log(event.type);
+
     if (device) {
         return;
     }
@@ -31,6 +33,8 @@ async function connect() {
   }
 
 async function remoteForward() {
+    console.log(event.type);
+
     if (!device) return;
 	
 	const reportId = 0x00;
@@ -41,6 +45,8 @@ async function remoteForward() {
 }
 
 async function remoteBackward() {
+    console.log(event.type);
+
     if (!device) return;
 	
 	const reportId = 0x00;
@@ -51,6 +57,8 @@ async function remoteBackward() {
 }
 
 async function remoteTurnLeft() {
+    console.log(event.type);
+
     if (!device) return;
 	
 	const reportId = 0x00;
@@ -61,6 +69,8 @@ async function remoteTurnLeft() {
 }
 
 async function remoteTurnRight() {
+    console.log(event.type);
+
     if (!device) return;
 	
 	const reportId = 0x00;
@@ -71,6 +81,8 @@ async function remoteTurnRight() {
 }
 
 async function remoteMouseup() {
+    console.log(event.type);
+
     if (!device) return;
 
 	const reportId = 0x00;
