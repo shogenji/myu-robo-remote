@@ -3,9 +3,9 @@ let device;
 async function connect() {
     console.log(event.type);
 
-    if (device) {
-        return;
-    }
+    // if (device) {
+    //    return;
+    // }
 
     // Filter on devices with the MYU robo.
     const filters = [
