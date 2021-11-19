@@ -22,6 +22,7 @@ async function connect() {
         if (!device) {
           return;
         }
+        console.log(device);
         // Wait for the HID connection to open.
 	    await device.open();
         document.getElementById("deviceStatus").innerText = device.productName + "に接続しました。";
@@ -124,7 +125,7 @@ function handleConnectedDevice(e) {
 function handleDisconnectedDevice(e) {
     console.log("Device disconnected: " + e.device.productName);
 
-    device = undefined;
+    // device = undefined;
     document.getElementById("deviceStatus").innerText = "接続されていません。";
 }
 
@@ -136,7 +137,6 @@ function handleInputReport(e) {
 navigator.hid.addEventListener("connect", handleConnectedDevice);
 navigator.hid.addEventListener("disconnect", handleDisconnectedDevice);
 navigator.hid.addEventListener("inputreport", handleInputReport);
-    
 
 window.oncontextmenu = function(event) {
     event.preventDefault();
