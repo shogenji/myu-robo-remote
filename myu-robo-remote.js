@@ -18,11 +18,12 @@ async function connect() {
       ];
     // Prompt user to select a MYU robo device.
     try {
-        [device] = await navigator.hid.requestDevice({ filters });
+        [device] = await navigator.hid.requestDevice({filters:[]});
+        // [device] = await navigator.hid.requestDevice({ filters });
         if (!device) {
           return;
         }
-        console.log(device);
+
         // Wait for the HID connection to open.
 	    await device.open();
         document.getElementById("deviceStatus").innerText = device.productName + "に接続しました。";
@@ -81,6 +82,24 @@ async function remoteMouseup() {
     await device.sendReport(reportId, new Uint8Array(data));
 }
 
+function deviceOpen() {
+    if (!device) return;
+    console.log(device);
+
+    // Wait for the HID connection to open.
+    device.open();
+    document.getElementById("deviceStatus").innerText = device.productName + "に接続しました。（state: opened）";
+}
+
+function deviceClose() {
+    if (!device) return;
+    console.log(device);
+
+    // Wait for the HID connection to close.
+    device.close();
+    document.getElementById("deviceStatus").innerText = device.productName + "に接続しました。（state: closed）";
+}
+
 function startup() {
     if (!("hid" in navigator)) {
         document.getElementById("deviceStatus").innerText = "WebHIDに未対応です。";
@@ -94,6 +113,9 @@ function startup() {
     const btnBackward = document.getElementById('btnBackward');
     const btnTurnLeft = document.getElementById('btnTurnLeft');
     const btnTurnRight = document.getElementById('btnTurnRight');
+
+    const btnOpen = document.getElementById('btnOpen');
+    const btnClose = document.getElementById('btnClose');
     
     btnForward.addEventListener('touchstart', remoteForward, false);
     btnForward.addEventListener('touchend', remoteMouseup, false);
@@ -114,6 +136,12 @@ function startup() {
     btnTurnRight.addEventListener('touchend', remoteMouseup, false);
     btnTurnRight.addEventListener('mousedown', remoteTurnRight, false);
     btnTurnRight.addEventListener('mouseup', remoteMouseup, false);
+
+    btnOpen.addEventListener('touchend', deviceOpen, false);
+    btnOpen.addEventListener('mouseup', deviceOpen, false);
+
+    btnClose.addEventListener('touchend', deviceClose, false);
+    btnClose.addEventListener('mouseup', deviceClose, false);
 }
 
 document.addEventListener("DOMContentLoaded", startup);
